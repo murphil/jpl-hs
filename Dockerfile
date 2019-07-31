@@ -29,7 +29,7 @@ RUN set -ex \
       hmatrix linear ad integration statistics \
       filepath directory pretty process singletons \
       monad-par async stm classy-prelude reactive-banana uniplate syb dimensional alex \
-      # bound unbound-generics primitive memory array
+      bound unbound-generics primitive memory array \
       free extensible-effects ghc-prim \
       bytestring containers fgl memory array \
       template-haskell time transformers unix attoparsec megaparsec mtl \
@@ -44,7 +44,7 @@ RUN set -ex \
   # 设置全局 stack resolver, 避免运行时重新安装 lts
   ; sed -i "s/^\(resolver:\).*$/\1 ${STACKAGE_VERSION}/g" ${STACK_ROOT}/global-project/stack.yaml \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
-  ; rm -rf ${STACK_ROOT}/pantry/hackage/* \
+  ; rm -rf ${STACK_ROOT}/pantry/* \
   ; rm -rf ${HOME}/IHaskell/ \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
