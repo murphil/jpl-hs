@@ -31,7 +31,7 @@ RUN set -ex \
       monad-par async stm classy-prelude reactive-banana uniplate syb dimensional alex \
       bound unbound-generics primitive memory array \
       free extensible-effects ghc-prim \
-      bytestring containers fgl memory array \
+      bytestring containers fgl \
       template-haskell time transformers unix attoparsec megaparsec mtl \
       network QuickCheck parallel random call-stack regex-base regex-compat regex-posix \
       text hashable unordered-containers vector zlib fixed \
