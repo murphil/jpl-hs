@@ -2,7 +2,7 @@ FROM nnurphy/jpl-rs
 
 ### Haskell
 ENV STACK_ROOT=/opt/stack \
-    STACKAGE_VERSION=lts-13.30
+    STACKAGE_VERSION=lts-14.1
 
 RUN set -ex \
   ; mkdir -p ${STACK_ROOT} && mkdir -p ${HOME}/.cabal \
