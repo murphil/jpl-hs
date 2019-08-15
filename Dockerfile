@@ -28,7 +28,7 @@ RUN set -ex \
       hspec extensible-exceptions deepseq \
       hmatrix linear ad integration statistics \
       filepath directory pretty process singletons \
-      monad-par async stm classy-prelude reactive-banana uniplate syb dimensional alex \
+      monad-par async stm classy-prelude reactive-banana uniplate syb dimensional \
       bound unbound-generics primitive memory array \
       free extensible-effects ghc-prim \
       bytestring containers fgl \
