@@ -1,8 +1,8 @@
 FROM nnurphy/jpl-rs
 
 ### Haskell
-ENV STACK_ROOT=/opt/stack \
-    STACKAGE_VERSION=lts-14.11
+ENV STACK_ROOT=/opt/stack
+ENV STACKAGE_VERSION=lts-14.12
 
 RUN set -ex \
   ; mkdir -p ${STACK_ROOT} && mkdir -p ${HOME}/.cabal \
