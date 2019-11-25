@@ -5,6 +5,7 @@ ENV STACK_ROOT=/opt/stack
 
 RUN set -ex \
   ; mkdir -p ${STACK_ROOT} && mkdir -p ${HOME}/.cabal \
+  ; mkdir -p ${STACK_ROOT}/global-project \
   ; curl -sSL https://get.haskellstack.org/ | sh \
   ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
   ; stack update && stack setup \
@@ -14,6 +15,10 @@ RUN set -ex \
   ; sed -i 's/==.*$//g' requirements.txt \
   ; pip --no-cache-dir install -r requirements.txt \
   #; sed -i "s/^\(resolver:\).*$/\1 ${STACKAGE_VERSION}/g" stack.yaml \
+  # Disabled for now because gtk2hs-buildtools doesn't work with lts-13 yet
+  #; stack install gtk2hs-buildtools \
+  ; stack install --fast \
+  ; ${HOME}/.local/bin/ihaskell install --stack \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
   ; stack install \
       optparse-applicative taggy \
@@ -35,13 +40,8 @@ RUN set -ex \
       network QuickCheck parallel random call-stack regex-base regex-compat regex-posix \
       text hashable unordered-containers vector zlib fixed \
       flow lens recursion-schemes \
-  # Disabled for now because gtk2hs-buildtools doesn't work with lts-13 yet
-  #; stack install gtk2hs-buildtools \
-  ; stack install --fast \
-  ; ${HOME}/.local/bin/ihaskell install --stack \
-  ; mkdir -p ${STACK_ROOT}/global-project \
   # 设置全局 stack resolver, 避免运行时重新安装 lts
-  ; sed -i "s/^\(resolver:\).*$/\1 ${STACKAGE_VERSION}/g" ${STACK_ROOT}/global-project/stack.yaml \
+  ; yq w -i ${STACK_ROOT}/global-project/stack.yaml resolver $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
   ; rm -rf ${STACK_ROOT}/pantry/* \
   ; rm -rf ${HOME}/IHaskell/ \
