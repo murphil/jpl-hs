@@ -49,7 +49,6 @@ RUN set -ex \
 
 COPY .ghci ${HOME}/.ghci
 
-#RUN set -ex \
-#  ; jupyter labextension install ihaskell_labextension \
-#  #; jupyter labextension install jupyterlab-ihaskell \
-#  ; rm -rf /usr/local/share/.cache/yarn
+RUN set -ex \
+  ; jupyter labextension install jupyterlab-ihaskell \
+  ; rm -rf /usr/local/share/.cache/yarn
