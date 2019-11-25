@@ -1,7 +1,7 @@
 FROM nnurphy/jpl-rs
 
 ### Haskell
-ENV STACK_ROOT=/opt/stack STACKAGE_VERSION=lts-14.12
+ENV STACK_ROOT=/opt/stack
 
 RUN set -ex \
   ; mkdir -p ${STACK_ROOT} && mkdir -p ${HOME}/.cabal \
@@ -13,7 +13,7 @@ RUN set -ex \
   # pip: 去掉版本号,尽量使用已安装版本
   ; sed -i 's/==.*$//g' requirements.txt \
   ; pip --no-cache-dir install -r requirements.txt \
-  ; sed -i "s/^\(resolver:\).*$/\1 ${STACKAGE_VERSION}/g" stack.yaml \
+  #; sed -i "s/^\(resolver:\).*$/\1 ${STACKAGE_VERSION}/g" stack.yaml \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
   ; stack install \
       optparse-applicative taggy \
@@ -34,7 +34,7 @@ RUN set -ex \
       template-haskell time transformers unix attoparsec megaparsec mtl \
       network QuickCheck parallel random call-stack regex-base regex-compat regex-posix \
       text hashable unordered-containers vector zlib fixed \
-      flow lens \
+      flow lens recursion-schemes \
   # Disabled for now because gtk2hs-buildtools doesn't work with lts-13 yet
   #; stack install gtk2hs-buildtools \
   ; stack install --fast \
