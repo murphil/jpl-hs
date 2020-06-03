@@ -53,3 +53,5 @@ RUN set -ex \
   ; stack install flow lens recursion-schemes \
   ; jupyter labextension install jupyterlab-ihaskell \
   ; rm -rf /usr/local/share/.cache/yarn
+
+COPY config.tuna.yaml /opt/stack/config.yaml

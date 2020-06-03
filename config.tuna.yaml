@@ -1,0 +1,8 @@
+templates:
+  params: null
+system-ghc: false
+install-ghc: true
+
+setup-info-locations: ["http://mirrors.tuna.tsinghua.edu.cn/stackage/stack-setup.yaml"]
+urls:
+  latest-snapshot: http://mirrors.tuna.tsinghua.edu.cn/stackage/snapshots.json
