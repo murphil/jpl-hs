@@ -20,7 +20,7 @@ RUN set -ex \
   ; stack install --fast \
   ; ${HOME}/.local/bin/ihaskell install --stack \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
-  ; stack install \
+  ; stack install --no-interleaved-output \
       optparse-applicative taggy \
       shelly aeson yaml \
       monad-journal \
@@ -32,7 +32,6 @@ RUN set -ex \
       hspec extensible-exceptions deepseq \
       hmatrix linear ad integration statistics \
       filepath directory pretty process singletons \
-  ; stack install \
       monad-par async stm classy-prelude reactive-banana uniplate syb dimensional \
       bound unbound-generics primitive memory array \
       free extensible-effects ghc-prim \
