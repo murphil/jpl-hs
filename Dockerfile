@@ -23,8 +23,8 @@ RUN set -ex \
   ; stack install --no-interleaved-output \
       optparse-applicative taggy \
       shelly aeson yaml \
-      monad-journal \
-      MonadRandom monad-logger \
+      monad-journal monad-logger \
+      MonadRandom \
       cryptonite pipes \
       conduit machines mustache \
       # wreq scotty wai websockets warp
