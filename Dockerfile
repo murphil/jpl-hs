@@ -20,7 +20,7 @@ RUN set -ex \
   ; stack install --fast \
   ; ${HOME}/.local/bin/ihaskell install --stack \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
-  ; stack install --no-interleaved-output \
+  ; stack install -j1 --no-interleaved-output \
       optparse-applicative taggy \
       shelly aeson yaml \
       monad-journal monad-logger \
