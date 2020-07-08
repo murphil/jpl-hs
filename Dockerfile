@@ -8,9 +8,9 @@ RUN set -ex \
   ; mkdir -p ${STACK_ROOT}/global-project \
   ; curl -sSL https://get.haskellstack.org/ | sh \
   ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
-  ; stack update && stack setup \
   ; git clone https://github.com/gibiansky/IHaskell \
   ; cd IHaskell \
+  ; stack update && stack setup \
   # pip: 去掉版本号,尽量使用已安装版本
   ; sed -i 's/==.*$//g' requirements.txt \
   ; pip --no-cache-dir install -r requirements.txt \
