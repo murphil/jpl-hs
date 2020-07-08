@@ -25,19 +25,19 @@ RUN set -ex \
       shelly aeson yaml \
       monad-journal monad-logger \
       MonadRandom \
-      cryptonite pipes \
+      pipes \
       conduit machines mustache \
       # wreq scotty wai websockets warp
-      http-conduit servant \
-      hspec extensible-exceptions deepseq \
-      hmatrix linear ad integration statistics \
+      http-conduit \
+      extensible-exceptions deepseq \
+      hmatrix linear integration statistics \
       filepath directory pretty process singletons \
-      monad-par async stm classy-prelude reactive-banana uniplate syb dimensional \
-      bound unbound-generics primitive memory array \
-      free extensible-effects ghc-prim \
+      monad-par async stm classy-prelude \
+      bound unbound-generics memory array \
+      free extensible-effects  \
       bytestring containers fgl \
       template-haskell time transformers unix attoparsec megaparsec mtl \
-      network QuickCheck parallel random call-stack regex-base regex-compat regex-posix \
+      QuickCheck parallel random call-stack \
       text hashable unordered-containers vector zlib fixed \
       flow lens recursion-schemes \
   # 设置全局 stack resolver, 避免运行时重新安装 lts
