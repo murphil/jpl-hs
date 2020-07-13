@@ -30,9 +30,9 @@ RUN set -ex \
       # wreq scotty wai websockets warp
       http-conduit \
       extensible-exceptions deepseq \
-      hmatrix linear integration statistics \
+  #    hmatrix linear integration statistics \
       filepath directory pretty process singletons \
-      monad-par async stm classy-prelude \
+  #    monad-par async stm classy-prelude \
       bound unbound-generics memory array \
       free extensible-effects  \
       bytestring containers fgl \
