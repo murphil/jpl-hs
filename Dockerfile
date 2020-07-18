@@ -21,24 +21,26 @@ RUN set -ex \
   ; ${HOME}/.local/bin/ihaskell install --stack \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
   ; stack install -j1 --no-interleaved-output \
-      optparse-applicative taggy \
+      # optparse-applicative taggy \
       shelly aeson yaml \
       monad-journal monad-logger \
       MonadRandom \
-      pipes \
+      # pipes \
       conduit machines mustache \
       # wreq scotty wai websockets warp
       http-conduit \
-      extensible-exceptions deepseq \
+      # extensible-exceptions deepseq \
   #    hmatrix linear integration statistics \
       filepath directory pretty process singletons \
   #    monad-par async stm classy-prelude \
-      bound unbound-generics memory array \
+      # bound unbound-generics memory array \
       free extensible-effects  \
-      bytestring containers fgl \
-      template-haskell time transformers unix attoparsec megaparsec mtl \
-      QuickCheck parallel random call-stack \
-      text hashable unordered-containers vector zlib fixed \
+      # bytestring containers fgl \
+      template-haskell time transformers unix attoparsec \
+      # megaparsec mtl \
+      QuickCheck \
+      # parallel random call-stack \
+      # text hashable unordered-containers vector zlib fixed \
       flow lens recursion-schemes \
   # 设置全局 stack resolver, 避免运行时重新安装 lts
   ; yq w -i ${STACK_ROOT}/global-project/stack.yaml resolver $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
