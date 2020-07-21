@@ -17,14 +17,14 @@ RUN set -ex \
   #; sed -i "s/^\(resolver:\).*$/\1 ${STACKAGE_VERSION}/g" stack.yaml \
   # Disabled for now because gtk2hs-buildtools doesn't work with lts-13 yet
   #; stack install gtk2hs-buildtools \
-  ; stack install --fast \
+  ; stack install -j1 --fast \
   ; ${HOME}/.local/bin/ihaskell install --stack \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
   ; stack install -j1 --no-interleaved-output \
       # optparse-applicative taggy \
       shelly aeson yaml \
       monad-journal monad-logger \
-      MonadRandom \
+      MonadRandom unix \
       # pipes \
       conduit machines mustache \
       # wreq scotty wai websockets warp
@@ -36,7 +36,7 @@ RUN set -ex \
       # bound unbound-generics memory array \
       free extensible-effects  \
       # bytestring containers fgl \
-      template-haskell time transformers unix attoparsec \
+      template-haskell time transformers attoparsec \
       # megaparsec mtl \
       QuickCheck \
       # parallel random call-stack \
