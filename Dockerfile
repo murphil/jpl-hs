@@ -43,7 +43,7 @@ RUN set -ex \
       # text hashable unordered-containers vector zlib fixed \
       flow lens recursion-schemes \
   # 设置全局 stack resolver, 避免运行时重新安装 lts
-  #; yq w -i ${STACK_ROOT}/global-project/stack.yaml resolver $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
+  ; yq w -i ${STACK_ROOT}/global-project/stack.yaml resolver $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
   ; rm -rf ${STACK_ROOT}/pantry/* \
   ; rm -rf ${HOME}/IHaskell/ \
