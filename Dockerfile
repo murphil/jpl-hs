@@ -10,7 +10,7 @@ RUN set -ex \
   ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
   ; git clone https://github.com/gibiansky/IHaskell \
   ; cd IHaskell \
-  ; stack update && stack setup \
+  #; stack update && stack setup \
   # pip: 去掉版本号,尽量使用已安装版本
   ; sed -i 's/==.*$//g' requirements.txt \
   ; pip --no-cache-dir install -r requirements.txt \
@@ -18,7 +18,10 @@ RUN set -ex \
   # Disabled for now because gtk2hs-buildtools doesn't work with lts-13 yet
   #; stack install gtk2hs-buildtools \
   ; stack install -j1 --fast \
+  ; yq w -i ${STACK_ROOT}/global-project/stack.yaml 'resolver' \
+        $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
   ; ${HOME}/.local/bin/ihaskell install --stack \
+  # 设置全局 stack resolver, 避免运行时重新安装 lts
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
   ; stack install -j1 --no-interleaved-output \
       # optparse-applicative taggy \
@@ -42,8 +45,6 @@ RUN set -ex \
       # parallel random call-stack \
       # text hashable unordered-containers vector zlib fixed \
       flow lens recursion-schemes \
-  # 设置全局 stack resolver, 避免运行时重新安装 lts
-  ; yq w -i ${STACK_ROOT}/global-project/stack.yaml resolver $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
   ; rm -rf ${STACK_ROOT}/pantry/* \
   ; rm -rf ${HOME}/IHaskell/ \
