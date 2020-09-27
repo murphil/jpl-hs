@@ -54,7 +54,7 @@ RUN set -ex \
 COPY .ghci ${HOME}/.ghci
 
 RUN set -ex \
-  ; stack install flow lens recursion-schemes \
+  #; stack install flow lens recursion-schemes \
   ; jupyter labextension install jupyterlab-ihaskell \
   ; rm -rf /usr/local/share/.cache/yarn
 
