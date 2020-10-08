@@ -48,7 +48,7 @@ RUN set -ex \
       flow lens recursion-schemes \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
   ; rm -rf ${STACK_ROOT}/pantry/* \
-  ; rm -rf ${HOME}/IHaskell/ \
+  #; rm -rf ${HOME}/IHaskell/ \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 COPY .ghci ${HOME}/.ghci
