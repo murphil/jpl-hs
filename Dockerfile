@@ -8,7 +8,7 @@ RUN set -ex \
   ; mkdir -p ${STACK_ROOT}/global-project \
   ; touch ${STACK_ROOT}/global-project/stack.yaml \
   ; curl -sSL https://get.haskellstack.org/ | sh \
-  ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
+  #; stack config set system-ghc --global false && stack config set install-ghc --global true  \
   ; git clone https://github.com/gibiansky/IHaskell \
   ; cd IHaskell \
   #; stack update && stack setup \
@@ -19,10 +19,10 @@ RUN set -ex \
   # Disabled for now because gtk2hs-buildtools doesn't work with lts-13 yet
   #; stack install gtk2hs-buildtools \
   ; stack install -j1 --fast \
-  #; yq w -i ${STACK_ROOT}/global-project/stack.yaml 'resolver' \
-  #      $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
-  ; ${HOME}/.local/bin/ihaskell install --stack \
   # 设置全局 stack resolver, 避免运行时重新安装 lts
+  #; yq w -i ${STACK_ROOT}/global-project/stack.yaml 'resolver' \
+  #    $(yq r ${HOME}/IHaskell/stack.yaml resolver) \
+  ; ${HOME}/.local/bin/ihaskell install --stack \
    # parsers boomerang criterion weigh arithmoi syb multipart HTTP html xhtml
   ; stack install -j1 --no-interleaved-output \
       # optparse-applicative taggy \
