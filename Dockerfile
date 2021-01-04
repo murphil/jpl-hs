@@ -50,7 +50,7 @@ RUN set -ex \
   ; curl -sSL https://github.com/haskell/haskell-language-server/releases/download/${hls_version}/haskell-language-server-wrapper-Linux.gz | gzip -d > /opt/language-server/haskell/haskell-language-server-wrapper \
   ; curl -sSL https://github.com/haskell/haskell-language-server/releases/download/${hls_version}/haskell-language-server-Linux-${ghc_version}.gz | gzip -d > /opt/language-server/haskell/haskell-language-server-${ghc_version} \
   ; chmod +x /opt/language-server/haskell/* \
-  ; for l in /opt/language-server/haskell/*; do ln -fs $i /usr/local/bin; done
+  ; for l in /opt/language-server/haskell/*; do ln -fs $l /usr/local/bin; done
 
 COPY .ghci ${HOME}/.ghci
 
