@@ -5,7 +5,7 @@ ENV STACK_ROOT=/opt/stack
 
 RUN set -ex \
   ; mkdir -p ${STACK_ROOT}/global-project && mkdir -p ${HOME}/.cabal \
-  ; curl -sSL https://get.haskellstack.org/ | sh \
+  ; wget -qO- https://get.haskellstack.org/ | sh \
   ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
   ; stack update && stack setup \
   ; git clone https://github.com/gibiansky/IHaskell \
