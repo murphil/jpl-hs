@@ -10,7 +10,7 @@ ARG stack_repo=commercialhaskell/stack
 RUN set -ex \
   ; mkdir -p ${STACK_ROOT}/global-project && mkdir -p ${HOME}/.cabal \
   ; stack_version=$(curl -sSL -H "'$github_header'" $github_api/${stack_repo}/releases | jq -r '.[0].tag_name') \
-  ; stack_url=https://github.com/commercialhaskell/stack/releases/download/${stack_version}/stack-${stack_version:1}-linux-x86_64-bin \
+  ; stack_url=https://github.com/commercialhaskell/stack/releases/download/${stack_version}/stack-$(echo $stack_version|cut -c 2-)-linux-x86_64-bin \
   ; wget -qO /usr/local/bin/stack $stack_url \
   ; chmod +x /usr/local/bin/stack \
   ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
