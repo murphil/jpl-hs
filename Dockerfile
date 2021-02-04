@@ -14,10 +14,10 @@ RUN set -ex \
   ; stack_url=https://github.com/commercialhaskell/stack/releases/download/${stack_version}/stack-$(echo $stack_version|cut -c 2-)-linux-x86_64-bin \
   ; wget -qO /usr/local/bin/stack $stack_url \
   ; chmod +x /usr/local/bin/stack \
-  ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
-  ; stack update && stack setup \
   ; git clone https://github.com/gibiansky/IHaskell \
   ; cd IHaskell \
+  ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
+  ; stack update && stack setup \
   # pip: 去掉版本号,使用已安装版本
   ; sed -i 's/==.*$//g' requirements.txt \
   ; pip --no-cache-dir install -r requirements.txt \
