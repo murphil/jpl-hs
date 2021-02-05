@@ -52,6 +52,10 @@ RUN set -ex \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 RUN set -ex \
+  ; echo "packages: []" > ${STACK_ROOT}/global-project/stack.yaml \
+  ; yq ea --inplace "select(fi==0).resolver=select(fi==1).resolver | select(fi==0)" \
+       ${STACK_ROOT}/global-project/stack.yaml ~/IHaskell/stack.yaml \
+  \
   ; mkdir -p /opt/language-server/haskell \
   ; cd ${HOME}/IHaskell \
   ; hls_version=$(curl -sSL -H "Accept: application/vnd.github.v3+json"  https://api.github.com/repos/haskell/haskell-language-server/releases | yq e '.[0].tag_name' -) \
