@@ -55,9 +55,10 @@ RUN set -ex \
   ; echo "packages: []" > ${STACK_ROOT}/global-project/stack.yaml \
   ; yq ea --inplace "select(fi==0).resolver=select(fi==1).resolver | select(fi==0)" \
        ${STACK_ROOT}/global-project/stack.yaml ~/IHaskell/stack.yaml \
+  ; cp ~/IHaskell/stack.yaml.lock ${STACK_ROOT}/global-project \
+  ; stack install flow lens recursion-schemes \
   \
   ; mkdir -p /opt/language-server/haskell \
-  ; cd ${HOME}/IHaskell \
   ; hls_version=$(curl -sSL -H "Accept: application/vnd.github.v3+json"  https://api.github.com/repos/haskell/haskell-language-server/releases | yq e '.[0].tag_name' -) \
   ; ghc_version=$(stack ghc -- --version | grep -oP 'version \K([0-9\.]+)') \
   ; curl -sSL https://github.com/haskell/haskell-language-server/releases/download/${hls_version}/haskell-language-server-wrapper-Linux.gz | gzip -d > /opt/language-server/haskell/haskell-language-server-wrapper \
@@ -68,7 +69,6 @@ RUN set -ex \
 COPY .ghci ${HOME}/.ghci
 
 #RUN set -ex \
-#  #; stack install flow lens recursion-schemes \
 #  ; jupyter labextension install jupyterlab-ihaskell \
 #  ; rm -rf /usr/local/share/.cache/yarn
 
