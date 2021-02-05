@@ -53,6 +53,7 @@ RUN set -ex \
 
 RUN set -ex \
   ; mkdir -p /opt/language-server/haskell \
+  ; cd ${HOME}/IHaskell \
   ; hls_version=$(curl -sSL -H "Accept: application/vnd.github.v3+json"  https://api.github.com/repos/haskell/haskell-language-server/releases | yq e '.[0].tag_name' -) \
   ; ghc_version=$(stack ghc -- --version | grep -oP 'version \K([0-9\.]+)') \
   ; curl -sSL https://github.com/haskell/haskell-language-server/releases/download/${hls_version}/haskell-language-server-wrapper-Linux.gz | gzip -d > /opt/language-server/haskell/haskell-language-server-wrapper \
@@ -67,4 +68,3 @@ COPY .ghci ${HOME}/.ghci
 #  ; jupyter labextension install jupyterlab-ihaskell \
 #  ; rm -rf /usr/local/share/.cache/yarn
 
-COPY config.tuna.yaml /opt/stack/config.yaml
