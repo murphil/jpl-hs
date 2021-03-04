@@ -16,7 +16,8 @@ RUN set -ex \
   ; chmod +x /usr/local/bin/stack \
   ; git clone https://github.com/gibiansky/IHaskell \
   ; cd IHaskell \
-  ; stack config set system-ghc --global false && stack config set install-ghc --global true  \
+  ; stack config set system-ghc --global false \
+  ; stack config set install-ghc --global true \
   ; stack update && stack setup \
   # pip: 去掉版本号,使用已安装版本
   ; sed -i 's/==.*$//g' requirements.txt \
@@ -47,7 +48,19 @@ RUN set -ex \
       # text hashable unordered-containers vector zlib fixed \
       flow lens recursion-schemes \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
-  ; rm -rf ${STACK_ROOT}/pantry/* \
+  ; rm -rf ${STACK_ROOT}/pantry/hackage/* \
+  ; yq e --inplace ".allow-different-user=true" ${STACK_ROOT}/config.yaml \
+  ; for x in config.yaml \
+             templates \
+             stack.sqlite3.pantry-write-lock \
+             pantry/pantry.sqlite3.pantry-write-lock \
+             snapshots/x86_64-linux-tinfo6 \
+             global-project/stack.yaml \
+             global-project/stack.yaml.lock \
+             global-project/.stack-work/ \
+             global-project/.stack-work/stack.sqlite3.pantry-write-lock \
+  ; do chmod 777 ${STACK_ROOT}/$x; done \
+  ; mv /root/.local/bin/* /usr/local/bin \
   #; rm -rf ${HOME}/IHaskell/ \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
