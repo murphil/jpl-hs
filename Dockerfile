@@ -49,16 +49,13 @@ RUN set -ex \
       flow lens recursion-schemes \
   ; rm -rf ${STACK_ROOT}/programs/x86_64-linux/*.tar.xz \
   ; rm -rf ${STACK_ROOT}/pantry/hackage/* \
+  ; stack new hello && rm -rf hello \
   ; yq e --inplace ".allow-different-user=true" ${STACK_ROOT}/config.yaml \
   ; for x in config.yaml \
              templates \
              stack.sqlite3.pantry-write-lock \
              pantry/pantry.sqlite3.pantry-write-lock \
              snapshots/x86_64-linux-tinfo6 \
-             global-project/stack.yaml \
-             global-project/stack.yaml.lock \
-             global-project/.stack-work/ \
-             global-project/.stack-work/stack.sqlite3.pantry-write-lock \
   ; do chmod 777 ${STACK_ROOT}/$x; done \
   ; mv /root/.local/bin/* /usr/local/bin \
   #; rm -rf ${HOME}/IHaskell/ \
