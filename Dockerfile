@@ -57,7 +57,7 @@ RUN set -ex \
              pantry/pantry.sqlite3.pantry-write-lock \
              snapshots/x86_64-linux-tinfo6 \
   ; do chmod 777 ${STACK_ROOT}/$x; done \
-  ; mv /root/.local/bin/* /usr/local/bin \
+  ; chmod -R 777 ${STACK_ROOT}/global-project \
   #; rm -rf ${HOME}/IHaskell/ \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
