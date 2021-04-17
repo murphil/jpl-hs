@@ -1,4 +1,4 @@
-FROM nnurphy/jpl-rs
+FROM nashv1/jpl-rs
 
 ### Haskell
 ENV STACK_ROOT=/opt/stack
